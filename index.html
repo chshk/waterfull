@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .main {
+      position: relative;
+    }
+
+    .box {
+      padding: 15px 0 0 15px;
+      float: left;
+    }
+
+    .pic {
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #333;
+    }
+
+    img {
+      width: 165px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="box">
+      <div class="pic"><img src="./img/1.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/2.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/3.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/4.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/5.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/6.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/7.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/8.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/9.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/10.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/11.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/12.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/13.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/14.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/15.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/16.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/17.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/18.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/19.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/20.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/21.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/22.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/23.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/24.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/25.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/26.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/27.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/28.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/29.jpg" alt=""></div>
+    </div>
+    <div class="box">
+      <div class="pic"><img src="./img/30.jpg" alt=""></div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  
+  window.onload=function(){
+	waterfall();
+}
+
+  function waterfall() {
+    var oMain = document.querySelector(".main");
+    var aBox = document.querySelectorAll(".box");
+    var boxW = aBox[0].offsetWidth;
+    var cols = Math.floor(document.documentElement.clientWidth / boxW);
+    oMain.style.cssText = "width:" + boxW * cols + "px;margin:0 auto";
+    var hArr = [];
+    for (var i = 0; i < aBox.length; i++) {
+      if (i < cols) {
+        hArr.push(aBox[i].offsetHeight);
+      } else {
+        var minH = Math.min.apply(null, hArr);
+        var index = getIndex(hArr, minH);
+        aBox[i].style.position = "absolute";
+        aBox[i].style.top = minH + "px";
+        aBox[i].style.left = boxW * index + "px";
+        hArr[index] += aBox[i].offsetHeight;
+      }
+    }
+  }
+
+  function getIndex(arr, val) {
+    for (var i in arr) {
+      if (arr[i] == val) {
+        return i;
+      }
+    }
+  }
+
+
+  window.onscroll=function(){
+      var oMain = document.querySelector(".main");
+      var aBox = document.querySelectorAll(".box");
+      var lastH=aBox[aBox.length-1].offsetTop+aBox[aBox.length-1].offsetHeight;
+      var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
+      var clientH = document.documentElement.clientHeight;
+      var scrollH = scrollT+clientH;
+      var data = [{"src":"1.jpg"},{"src":"2.jpg"},{"src":"3.jpg"},{"src":"4.jpg"},{"src":"5.jpg"},{"src":"6.jpg"},{"src":"7.jpg"},{"src":"8.jpg"},{"src":"9.jpg"},{"src":"10.jpg"},{"src":"11.jpg"},{"src":"12.jpg"},{"src":"13.jpg"},{"src":"14.jpg"},]
+      if(scrollH>=lastH){
+        for(var i=0;i<data.length;i++){
+          var oBox = document.createElement("div");
+          oBox.className = "box";
+          oMain.appendChild(oBox);
+          var oPic = document.createElement("div");
+          oPic.className = "pic";
+          oBox.appendChild(oPic);
+          var oImg = document.createElement("img");
+          oImg.src = "./img/"+data[i].src;
+          oPic.appendChild(oImg);
+        }
+      }
+      waterfall();
+    }
+</script>
